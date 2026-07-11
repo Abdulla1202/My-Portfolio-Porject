@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Abdulla Ansari | Data Analyst & ML Engineer</title>
     <meta name="description" content="Portfolio of Abdulla Ansari — Data Analyst, Django Developer & ML Engineer.">
-    <link rel="icon" type="image/x-icon" href="./Images/favicon.jpeg">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
@@ -28,8 +27,6 @@
         <div class="particle"></div>
         <div class="particle"></div>
         <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
     </div>
 
     <!-- Django Messages -->
@@ -41,7 +38,7 @@
     </div>
     {% endif %}
 
-    <!-- Navbar Section -->
+    <!-- Navbar -->
     <nav id="navbar">
         <div class="left-nav">
             <h2>Portfolio</h2>
@@ -54,6 +51,8 @@
         <div class="right-nav" id="rightNav">
             <ul>
                 <li><a href="#home" onclick="closeMenu()">Home</a></li>
+                <li><a href="#about" onclick="closeMenu()">About</a></li>
+                <li><a href="#experience" onclick="closeMenu()">Experience</a></li>
                 <li><a href="#skills" onclick="closeMenu()">Skills</a></li>
                 <li><a href="#Projects" onclick="closeMenu()">Projects</a></li>
                 <li><a href="#Contact" onclick="closeMenu()">Contact</a></li>
@@ -74,23 +73,21 @@
                 </div>
                 <p class="subtitle-text">Building digital experiences that merge creativity with technology. Specializing in data analytics, machine learning and web development.</p>
                 <div class="home-buttons">
-                    <a href="{% static 'pdf/resume.pdf' %}" target="_blank">
-                        <button class="btn poppins">Resume</button>
-                    </a>
-                    <a class="btn live poppins" href="#Contact">Let's Connect</a>
+                    <a href="{% static 'pdf/resume.pdf' %}" target="_blank" class="btn poppins">Resume</a>
+                    <a class="btn btn-primary poppins" href="#Contact">Let's Connect</a>
                 </div>
             </div>
         </div>
         <div class="home-right">
-            <div class="profile-image" id="mainImage">
+            <div class="profile-image">
                 <img src="{% static 'images/mypic.png' %}" alt="Abdulla Ansari">
             </div>
         </div>
     </section>
 
     <!-- About Section -->
-    <section id="about">
-        <h1 class="section-title scroll-animate">About Me</h1>
+    <section id="about" class="section">
+        <h2 class="section-title scroll-animate">About Me</h2>
         <div class="about-container scroll-animate">
             <div class="about-left">
                 <div class="about-img-frame">
@@ -99,308 +96,302 @@
             </div>
             <div class="about-right">
                 <div class="about-content">
-                    <h1>Abdulla Ansari</h1>
+                    <h3>Abdulla Ansari</h3>
                     <p>
                         Hi, I'm <strong>Abdulla Ansari</strong>, an aspiring 
                         <strong>Data Analyst and B.Tech Information Technology student</strong> 
                         with hands-on experience in <strong>Python, SQL, Power BI, Excel, and Machine Learning</strong>. 
                         I enjoy transforming raw data into meaningful insights through data cleaning, 
                         exploratory data analysis, visualization, and predictive modeling.
-                        <br><br>
+                    </p>
+                    <p>
                         During my internship at <strong>UdyamKart</strong>, I worked with real-world business data, 
-                        created interactive dashboards, analyzed customer behavior, and helped improve reporting efficiency. 
-                        I have also built practical projects involving <strong>healthcare analytics, Python-based SQL applications, 
-                        and live API-powered Power BI dashboards</strong>.
-                        <br><br>
-                        I am continuously improving my skills in 
-                        <strong>Machine Learning, Generative AI, and Data Analytics</strong>, 
-                        and I enjoy building projects that solve real-world problems through data and technology.
+                        created interactive dashboards, analyzed customer behavior, and helped improve reporting efficiency.
                     </p>
 
-                    <!-- Stats Counters -->
                     <div class="about-stats">
                         <div class="stat-item">
-                            <span class="stat-number" data-target="5">0</span>+
+                            <span class="stat-number" data-target="5">0</span><span class="stat-plus">+</span>
                             <span class="stat-label">Projects</span>
                         </div>
                         <div class="stat-item">
-                            <span class="stat-number" data-target="6">0</span>+
+                            <span class="stat-number" data-target="6">0</span><span class="stat-plus">+</span>
                             <span class="stat-label">Skills</span>
                         </div>
                         <div class="stat-item">
-                            <span class="stat-number" data-target="1">0</span>+
-                            <span class="stat-label">Internships</span>
+                            <span class="stat-number" data-target="1">0</span><span class="stat-plus">+</span>
+                            <span class="stat-label">Internship</span>
                         </div>
                         <div class="stat-item">
-                            <span class="stat-number" data-target="3">0</span>+
+                            <span class="stat-number" data-target="3">0</span><span class="stat-plus">+</span>
                             <span class="stat-label">Certificates</span>
                         </div>
                     </div>
-
                     <a class="btn" href="#Contact">Hire Me</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Skills Section -->
-    <section id="skills">
-        <h1 class="section-title scroll-animate">Technical Expertise</h1>
-        <div class="services-container scroll-animate">
-            <div class="skills-left">
-                <img src="{% static 'images/pro.png' %}" alt="Skills">
-            </div>
-            <div class="skills-right">
-                <div class="skillss-container" id="skillBars">
-                    <div class="java bar p-relative">
-                        <span class="bar-content left t-white">Power BI</span>
-                        <span class="bar-content right-skills">90%</span>
+    <!-- Experience Section -->
+    <section id="experience" class="section">
+        <h2 class="section-title scroll-animate">Experience</h2>
+        <div class="experience-timeline">
+
+            <div class="exp-card scroll-animate">
+                <div class="exp-dot"></div>
+                <div class="exp-content">
+                    <div class="exp-header">
+                        <h3>Data Analyst Intern</h3>
+                        <span class="exp-date"><i class="fa-regular fa-calendar"></i> Jan 2025 – Apr 2025</span>
                     </div>
-                    <div class="html bar p-relative">
-                        <span class="bar-content left t-white">Python</span>
-                        <span class="bar-content right-skills">90%</span>
-                    </div>
-                    <div class="css bar p-relative">
-                        <span class="bar-content left t-white">Excel</span>
-                        <span class="bar-content right-skills">80%</span>
-                    </div>
-                    <div class="js bar p-relative">
-                        <span class="bar-content left t-white">Django</span>
-                        <span class="bar-content right-skills">60%</span>
-                    </div>
-                    <div class="python bar p-relative">
-                        <span class="bar-content left t-white">CSS</span>
-                        <span class="bar-content right-skills">50%</span>
-                    </div>
-                    <div class="mysql bar p-relative">
-                        <span class="bar-content left t-white">MySQL</span>
-                        <span class="bar-content right-skills">40%</span>
+                    <h4 class="exp-company"><i class="fa-solid fa-building"></i> UdyamKart</h4>
+                    <ul class="exp-list">
+                        <li>Analyzed business data using Python, SQL, and Power BI to create interactive dashboards</li>
+                        <li>Performed customer behavior analysis and improved reporting efficiency</li>
+                        <li>Worked with real-world datasets for data cleaning, EDA, and visualization</li>
+                        <li>Built live API-powered Power BI dashboards for business decision making</li>
+                    </ul>
+                    <div class="exp-tags">
+                        <span>Python</span><span>SQL</span><span>Power BI</span><span>Excel</span><span>Data Analysis</span>
                     </div>
                 </div>
             </div>
+
+            <div class="exp-card scroll-animate">
+                <div class="exp-dot"></div>
+                <div class="exp-content">
+                    <div class="exp-header">
+                        <h3>B.Tech Information Technology</h3>
+                        <span class="exp-date"><i class="fa-regular fa-calendar"></i> 2022 – 2026</span>
+                    </div>
+                    <h4 class="exp-company"><i class="fa-solid fa-graduation-cap"></i> University Education</h4>
+                    <ul class="exp-list">
+                        <li>Pursuing B.Tech in Information Technology</li>
+                        <li>Learning Machine Learning, Generative AI, and Advanced Data Analytics</li>
+                        <li>Built projects including Movie Recommender System, Django Todo App</li>
+                        <li>Developed skills in Python, Django, SQL, Power BI, and CSS</li>
+                    </ul>
+                    <div class="exp-tags">
+                        <span>Machine Learning</span><span>Django</span><span>Gen AI</span><span>Python</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Skills Section (Card Grid) -->
+    <section id="skills" class="section">
+        <h2 class="section-title scroll-animate">Technical Expertise</h2>
+        <div class="skills-grid">
+
+            <div class="skill-card scroll-animate">
+                <div class="skill-icon" style="--glow-color: #3572A5;">
+                    <i class="fa-brands fa-python"></i>
+                </div>
+                <h4>Python</h4>
+                <p>Data Analysis, ML, Automation</p>
+            </div>
+
+            <div class="skill-card scroll-animate">
+                <div class="skill-icon" style="--glow-color: #f7df1e;">
+                    <i class="fa-solid fa-chart-line"></i>
+                </div>
+                <h4>Power BI</h4>
+                <p>Dashboards, DAX, Reports</p>
+            </div>
+
+            <div class="skill-card scroll-animate">
+                <div class="skill-icon" style="--glow-color: #00758f;">
+                    <i class="fa-solid fa-database"></i>
+                </div>
+                <h4>MySQL</h4>
+                <p>Queries, Joins, Optimization</p>
+            </div>
+
+            <div class="skill-card scroll-animate">
+                <div class="skill-icon" style="--glow-color: #217346;">
+                    <i class="fa-solid fa-file-excel"></i>
+                </div>
+                <h4>Excel</h4>
+                <p>Pivot Tables, VLOOKUP, Charts</p>
+            </div>
+
+            <div class="skill-card scroll-animate">
+                <div class="skill-icon" style="--glow-color: #092e20;">
+                    <i class="fa-solid fa-code"></i>
+                </div>
+                <h4>Django</h4>
+                <p>Web Apps, REST APIs, Auth</p>
+            </div>
+
+            <div class="skill-card scroll-animate">
+                <div class="skill-icon" style="--glow-color: #ff6f00;">
+                    <i class="fa-solid fa-brain"></i>
+                </div>
+                <h4>Machine Learning</h4>
+                <p>Scikit-learn, Pandas, NumPy</p>
+            </div>
+
         </div>
     </section>
 
     <!-- Projects Section -->
-    <section id="Projects">
-        <h1 class="section-title scroll-animate">Projects</h1>
+    <section id="Projects" class="section">
+        <h2 class="section-title scroll-animate">Projects</h2>
         <div class="projects-container">
 
-            <!-- Project 1 -->
-            <div class="projects-item scroll-animate">
-                <h1>Movie Recommender System</h1>
-                <p>
-                    An AI-powered Movie Recommender System built with Python, Flask, and TMDB API. It recommends similar movies using Machine Learning and cosine similarity, featuring fast recommendations, movie posters, autocomplete search, and a clean, responsive user interface.
-                </p>
-                <div class="buttons">
-                    <a href="https://github.com/Abdulla1202/Movie-Recomendetion-System"
-                        target="_blank" class="btn">GitHub</a>
-                    <a href="https://cinematch-mocha.vercel.app/"
-                        target="_blank" class="btn live">Live Demo</a>
+            <div class="project-card scroll-animate">
+                <div class="project-icon"><i class="fa-solid fa-film"></i></div>
+                <h3>Movie Recommender System</h3>
+                <p>An AI-powered Movie Recommender built with Python, Flask, and TMDB API. Uses ML cosine similarity for recommendations with autocomplete search and responsive UI.</p>
+                <div class="project-tags">
+                    <span>Python</span><span>Flask</span><span>ML</span><span>TMDB API</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/Abdulla1202/Movie-Recomendetion-System" target="_blank" class="btn btn-sm"><i class="fa-brands fa-github"></i> GitHub</a>
+                    <a href="https://cinematch-mocha.vercel.app/" target="_blank" class="btn btn-primary btn-sm"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live</a>
                 </div>
             </div>
 
-            <!-- Project 2 -->
-            <div class="projects-item scroll-animate">
-                <h1>Todo App</h1>
-                <p>
-                    A Django-based Todo App that enables users to register, log in, and manage their daily tasks efficiently. It supports task creation, editing, and deletion with secure authentication, offering a clean, responsive, and user-friendly interface built using Django, HTML, CSS, and SQLite.
-                </p>
-                <div class="buttons">
-                    <a href="https://github.com/Abdulla1202/Django-projects"
-                        target="_blank" class="btn">GitHub</a>
-                    <a href="https://taskflow-todo-j167.onrender.com/"
-                        target="_blank" class="btn live">Live Demo</a>
+            <div class="project-card scroll-animate">
+                <div class="project-icon"><i class="fa-solid fa-list-check"></i></div>
+                <h3>Todo App</h3>
+                <p>A Django-based Todo App with user authentication, task CRUD operations, and a clean responsive interface. Built using Django, HTML, CSS, and SQLite.</p>
+                <div class="project-tags">
+                    <span>Django</span><span>HTML/CSS</span><span>SQLite</span><span>Auth</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/Abdulla1202/Django-projects" target="_blank" class="btn btn-sm"><i class="fa-brands fa-github"></i> GitHub</a>
+                    <a href="https://taskflow-todo-j167.onrender.com/" target="_blank" class="btn btn-primary btn-sm"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live</a>
                 </div>
             </div>
 
         </div>
     </section>
 
-    <!-- Contact Me Section -->
-    <section id="Contact">
-        <h1 class="section-title scroll-animate">Contact Me</h1>
+    <!-- Contact Section -->
+    <section id="Contact" class="section">
+        <h2 class="section-title scroll-animate">Contact Me</h2>
         <div class="contact-container scroll-animate">
-            <div class="form" id="contactForm">
+            <div class="contact-form-card">
                 <form method="post">
                     {% csrf_token %}
-                    <div class="form-div">
-                        <input type="text" name="name" id="name" class="poppins" placeholder="Your Name">
+                    <div class="form-group">
+                        <input type="text" name="name" id="name" placeholder="Your Name" required>
                     </div>
-                    <div class="form-div">
-                        <input type="email" name="email" id="email" class="poppins" placeholder="Your Email" required>
+                    <div class="form-group">
+                        <input type="email" name="email" id="email" placeholder="Your Email" required>
                     </div>
-                    <div class="form-div">
-                        <input type="tel" name="number" id="phone" class="poppins" placeholder="Your Phone" required>
+                    <div class="form-group">
+                        <input type="tel" name="number" id="phone" placeholder="Your Phone" required>
                     </div>
-                    <div class="form-div">
-                        <textarea name="content" id="textarea" cols="30" rows="5" class="poppins" placeholder="Your Message"></textarea>
+                    <div class="form-group">
+                        <textarea name="content" id="textarea" rows="5" placeholder="Your Message"></textarea>
                     </div>
-                    <button type="submit" class="btn poppins" id="submit">Send Message</button>
+                    <button type="submit" class="btn btn-primary btn-full" id="submit">Send Message</button>
                 </form>
             </div>
         </div>
     </section>
 
-    <!-- Footer Section -->
+    <!-- Footer -->
     <footer id="footer">
-        <ul>
+        <ul class="footer-nav">
             <li><a href="#home">Home</a></li>
             <li><a href="#about">About</a></li>
+            <li><a href="#experience">Experience</a></li>
             <li><a href="#skills">Skills</a></li>
             <li><a href="#Projects">Projects</a></li>
             <li><a href="#Contact">Contact</a></li>
         </ul>
-        <ul class="font-awesome">
-            <li>
-                <a href="https://www.linkedin.com/in/abdulla-ansari-62910b296/" target="_blank">
-                    <i class="fa-brands fa-linkedin-in"></i>
-                </a>
-            </li>
-            <li>
-                <a href="https://github.com/Abdulla1202" target="_blank">
-                    <i class="fa-brands fa-github"></i>
-                </a>
-            </li>
-            <li>
-                <a href="https://x.com/home" target="_blank">
-                    <i class="fa-brands fa-twitter"></i>
-                </a>
-            </li>
+        <ul class="social-links">
+            <li><a href="https://www.linkedin.com/in/abdulla-ansari-62910b296/" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a></li>
+            <li><a href="https://github.com/Abdulla1202" target="_blank"><i class="fa-brands fa-github"></i></a></li>
+            <li><a href="https://x.com/home" target="_blank"><i class="fa-brands fa-twitter"></i></a></li>
         </ul>
-        <p>© 2026 <span class="cpy-white poppins">Abdulla Ansari</span> • All rights reserved.</p>
+        <p class="copyright">© 2026 <span class="highlight">Abdulla Ansari</span> • All rights reserved.</p>
     </footer>
 
-    <!-- JavaScript -->
     <script>
-        // ===== Name Typewriter Effect =====
+        // ===== Typewriter — Name =====
         const nameText = "Abdulla Ansari";
         const typedNameEl = document.getElementById('typed-name');
-        let nameIndex = 0;
-
+        let nameIdx = 0;
         function typeName() {
-            if (nameIndex < nameText.length) {
-                typedNameEl.textContent += nameText.charAt(nameIndex);
-                nameIndex++;
+            if (nameIdx < nameText.length) {
+                typedNameEl.textContent += nameText.charAt(nameIdx);
+                nameIdx++;
                 setTimeout(typeName, 100);
-            } else {
-                // Name done, start role typing after a pause
-                setTimeout(startRoleTyping, 800);
-            }
+            } else { setTimeout(startRoleTyping, 600); }
         }
+        setTimeout(typeName, 400);
 
-        // Start name typing
-        setTimeout(typeName, 500);
-
-        // ===== Role Cycling Typewriter Effect =====
+        // ===== Typewriter — Roles =====
         const roles = ["Data Analyst", "Django Developer", "ML Engineer"];
         const typedRoleEl = document.getElementById('typed-role');
-        let roleIndex = 0;
-        let roleCharIndex = 0;
-        let isDeleting = false;
-
-        function startRoleTyping() {
-            typeRole();
-        }
-
+        let rIdx = 0, rCharIdx = 0, isDel = false;
+        function startRoleTyping() { typeRole(); }
         function typeRole() {
-            const currentRole = roles[roleIndex];
-
-            if (!isDeleting) {
-                // Typing forward
-                typedRoleEl.textContent = currentRole.substring(0, roleCharIndex + 1);
-                roleCharIndex++;
-
-                if (roleCharIndex === currentRole.length) {
-                    // Finished typing, pause then delete
-                    isDeleting = true;
-                    setTimeout(typeRole, 2000);
-                    return;
-                }
+            const cur = roles[rIdx];
+            if (!isDel) {
+                typedRoleEl.textContent = cur.substring(0, rCharIdx + 1);
+                rCharIdx++;
+                if (rCharIdx === cur.length) { isDel = true; setTimeout(typeRole, 2000); return; }
                 setTimeout(typeRole, 80);
             } else {
-                // Deleting backward
-                typedRoleEl.textContent = currentRole.substring(0, roleCharIndex - 1);
-                roleCharIndex--;
-
-                if (roleCharIndex === 0) {
-                    // Finished deleting, move to next role
-                    isDeleting = false;
-                    roleIndex = (roleIndex + 1) % roles.length;
-                    setTimeout(typeRole, 400);
-                    return;
-                }
+                typedRoleEl.textContent = cur.substring(0, rCharIdx - 1);
+                rCharIdx--;
+                if (rCharIdx === 0) { isDel = false; rIdx = (rIdx + 1) % roles.length; setTimeout(typeRole, 400); return; }
                 setTimeout(typeRole, 50);
             }
         }
 
-        // ===== Navbar Scroll Effect =====
-        const navbar = document.getElementById('navbar');
+        // ===== Navbar Scroll =====
         window.addEventListener('scroll', () => {
-            navbar.classList.toggle('scrolled', window.scrollY > 50);
+            document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
         });
 
         // ===== Mobile Menu =====
         function toggleMenu() {
             document.getElementById('hamburger').classList.toggle('active');
             document.getElementById('rightNav').classList.toggle('active');
+            document.body.classList.toggle('menu-open');
         }
-
         function closeMenu() {
             document.getElementById('hamburger').classList.remove('active');
             document.getElementById('rightNav').classList.remove('active');
+            document.body.classList.remove('menu-open');
         }
 
-        // ===== Scroll Animations =====
-        const scrollElements = document.querySelectorAll('.scroll-animate, .scroll-animate-left, .scroll-animate-right');
+        // ===== Scroll Animations + Counters =====
         let statsAnimated = false;
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animate-in');
-
-                    // Skill bars animation
-                    if (entry.target.closest('#skills') || entry.target.querySelector('#skillBars')) {
-                        const bars = document.querySelectorAll('.java, .html, .css, .js, .python, .mysql');
-                        bars.forEach((bar, i) => {
-                            setTimeout(() => bar.classList.add('animate'), i * 200);
-                        });
-                    }
-
-                    // Stats counter animation
-                    if (entry.target.closest('#about') && !statsAnimated) {
+        const obs = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.classList.add('animate-in');
+                    if (e.target.closest('#about') && !statsAnimated) {
                         statsAnimated = true;
-                        document.querySelectorAll('.stat-number').forEach(counter => {
-                            const target = +counter.getAttribute('data-target');
-                            const duration = 1500;
-                            const step = target / (duration / 30);
-                            let current = 0;
+                        document.querySelectorAll('.stat-number').forEach(c => {
+                            const t = +c.dataset.target, dur = 1200, step = t / (dur / 30);
+                            let v = 0;
                             const timer = setInterval(() => {
-                                current += step;
-                                if (current >= target) {
-                                    counter.textContent = target;
-                                    clearInterval(timer);
-                                } else {
-                                    counter.textContent = Math.floor(current);
-                                }
+                                v += step;
+                                if (v >= t) { c.textContent = t; clearInterval(timer); }
+                                else c.textContent = Math.floor(v);
                             }, 30);
                         });
                     }
                 }
             });
-        }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
-        scrollElements.forEach(el => observer.observe(el));
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.scroll-animate').forEach(el => obs.observe(el));
 
         // ===== Auto-hide Messages =====
-        document.querySelectorAll('.django-message').forEach(msg => {
-            setTimeout(() => {
-                msg.style.opacity = '0';
-                msg.style.transform = 'translateX(30px)';
-                setTimeout(() => msg.remove(), 400);
-            }, 4000);
+        document.querySelectorAll('.django-message').forEach(m => {
+            setTimeout(() => { m.style.opacity='0'; setTimeout(() => m.remove(), 400); }, 4000);
         });
     </script>
-
 </body>
 </html>
