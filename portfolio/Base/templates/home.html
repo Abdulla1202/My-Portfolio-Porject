@@ -93,7 +93,9 @@
         <h1 class="section-title scroll-animate">About Me</h1>
         <div class="about-container scroll-animate">
             <div class="about-left">
-                <img src="{% static 'images/dog.png' %}" alt="About Abdulla Ansari">
+                <div class="about-img-frame">
+                    <img src="{% static 'images/dog.png' %}" alt="About Abdulla Ansari">
+                </div>
             </div>
             <div class="about-right">
                 <div class="about-content">
@@ -114,6 +116,27 @@
                         <strong>Machine Learning, Generative AI, and Data Analytics</strong>, 
                         and I enjoy building projects that solve real-world problems through data and technology.
                     </p>
+
+                    <!-- Stats Counters -->
+                    <div class="about-stats">
+                        <div class="stat-item">
+                            <span class="stat-number" data-target="5">0</span>+
+                            <span class="stat-label">Projects</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" data-target="6">0</span>+
+                            <span class="stat-label">Skills</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" data-target="1">0</span>+
+                            <span class="stat-label">Internships</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" data-target="3">0</span>+
+                            <span class="stat-label">Certificates</span>
+                        </div>
+                    </div>
+
                     <a class="btn" href="#Contact">Hire Me</a>
                 </div>
             </div>
@@ -329,15 +352,39 @@
         }
 
         // ===== Scroll Animations =====
-        const scrollElements = document.querySelectorAll('.scroll-animate');
+        const scrollElements = document.querySelectorAll('.scroll-animate, .scroll-animate-left, .scroll-animate-right');
+        let statsAnimated = false;
+
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('animate-in');
+
+                    // Skill bars animation
                     if (entry.target.closest('#skills') || entry.target.querySelector('#skillBars')) {
                         const bars = document.querySelectorAll('.java, .html, .css, .js, .python, .mysql');
                         bars.forEach((bar, i) => {
-                            setTimeout(() => bar.classList.add('animate'), i * 150);
+                            setTimeout(() => bar.classList.add('animate'), i * 200);
+                        });
+                    }
+
+                    // Stats counter animation
+                    if (entry.target.closest('#about') && !statsAnimated) {
+                        statsAnimated = true;
+                        document.querySelectorAll('.stat-number').forEach(counter => {
+                            const target = +counter.getAttribute('data-target');
+                            const duration = 1500;
+                            const step = target / (duration / 30);
+                            let current = 0;
+                            const timer = setInterval(() => {
+                                current += step;
+                                if (current >= target) {
+                                    counter.textContent = target;
+                                    clearInterval(timer);
+                                } else {
+                                    counter.textContent = Math.floor(current);
+                                }
+                            }, 30);
                         });
                     }
                 }
