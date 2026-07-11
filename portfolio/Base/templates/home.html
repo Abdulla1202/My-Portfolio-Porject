@@ -1,0 +1,319 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abdulla Ansari | Data Analyst Portfolio</title>
+    <meta name="description" content="Portfolio of Abdulla Ansari — Data Analyst skilled in Python, SQL, Power BI, Excel, and Machine Learning.">
+    <link rel="icon" type="image/x-icon" href="./Images/favicon.jpeg">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+    <!-- Floating Particles -->
+    <div class="particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <!-- Django Messages -->
+    {% if messages %}
+    <div class="django-messages">
+        {% for message in messages %}
+        <div class="django-message {{ message.tags }}">{{ message }}</div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <!-- Navbar Section -->
+    <nav id="navbar">
+        <div class="left-nav">
+            <h2>Portfolio</h2>
+        </div>
+        <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="right-nav" id="rightNav">
+            <ul>
+                <li><a href="#home" onclick="closeMenu()">Home <i class="fa-solid fa-house"></i></a></li>
+                <li><a href="#about" onclick="closeMenu()">About Me <i class="fa-solid fa-user"></i></a></li>
+                <li><a href="#skills" onclick="closeMenu()">Skills <i class="fa-solid fa-code"></i></a></li>
+                <li><a href="#Projects" onclick="closeMenu()">Projects <i class="fas fa-project-diagram"></i></a></li>
+                <li><a href="#Contact" onclick="closeMenu()">Contact <i class="fa-solid fa-rocket"></i></a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home">
+        <div class="home-left">
+            <div class="home-content">
+                <h6>Hi, I'm</h6>
+                <h1><span id="typed-name"></span><span class="cursor-blink"></span></h1>
+                <h4>Data Analyst</h4>
+                <div class="home-buttons">
+                    <a href="{% static 'pdf/Data Analysis Resume.pdf' %}" target="_blank">
+                        <button class="btn poppins">Resume</button>
+                    </a>
+                    <a class="btn live poppins" href="#Contact">Hire Me</a>
+                </div>
+            </div>
+        </div>
+        <div class="home-right">
+            <div class="profile-image" id="mainImage">
+                <img src="{% static 'images/mypic.png' %}" alt="Abdulla Ansari">
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <h1 class="section-title scroll-animate">About Me</h1>
+        <div class="about-container scroll-animate">
+            <div class="about-left">
+                <img src="{% static 'images/dog.png' %}" alt="About Abdulla Ansari">
+            </div>
+            <div class="about-right">
+                <div class="about-content">
+                    <h1>Abdulla Ansari</h1>
+                    <p>
+                        Hi, I'm <strong>Abdulla Ansari</strong>, an aspiring 
+                        <strong>Data Analyst and B.Tech Information Technology student</strong> 
+                        with hands-on experience in <strong>Python, SQL, Power BI, Excel, and Machine Learning</strong>. 
+                        I enjoy transforming raw data into meaningful insights through data cleaning, 
+                        exploratory data analysis, visualization, and predictive modeling.
+                        <br><br>
+                        During my internship at <strong>UdyamKart</strong>, I worked with real-world business data, 
+                        created interactive dashboards, analyzed customer behavior, and helped improve reporting efficiency. 
+                        I have also built practical projects involving <strong>healthcare analytics, Python-based SQL applications, 
+                        and live API-powered Power BI dashboards</strong>.
+                        <br><br>
+                        I am continuously improving my skills in 
+                        <strong>Machine Learning, Generative AI, and Data Analytics</strong>, 
+                        and I enjoy building projects that solve real-world problems through data and technology.
+                    </p>
+                    <a class="btn" href="#Contact">Hire Me</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <h1 class="section-title scroll-animate">Skills</h1>
+        <div class="services-container scroll-animate">
+            <div class="skills-left">
+                <img src="{% static 'images/pro.png' %}" alt="Skills">
+            </div>
+            <div class="skills-right">
+                <div class="skillss-container" id="skillBars">
+                    <div class="java bar p-relative">
+                        <span class="bar-content left t-white">Power BI</span>
+                        <span class="bar-content right-skills t-white">90%</span>
+                    </div>
+                    <div class="html bar p-relative">
+                        <span class="bar-content left t-white">Python</span>
+                        <span class="bar-content right-skills t-white">90%</span>
+                    </div>
+                    <div class="css bar p-relative">
+                        <span class="bar-content left t-white">Excel</span>
+                        <span class="bar-content right-skills t-white">80%</span>
+                    </div>
+                    <div class="js bar p-relative">
+                        <span class="bar-content left t-white">Django</span>
+                        <span class="bar-content right-skills t-white">60%</span>
+                    </div>
+                    <div class="python bar p-relative">
+                        <span class="bar-content left t-white">CSS</span>
+                        <span class="bar-content right-skills t-white">50%</span>
+                    </div>
+                    <div class="mysql bar p-relative">
+                        <span class="bar-content left t-white">MySQL</span>
+                        <span class="bar-content right-skills t-white">40%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="Projects">
+        <h1 class="section-title scroll-animate">Projects</h1>
+        <div class="projects-container">
+
+            <!-- Project 1 -->
+            <div class="projects-item scroll-animate">
+                <h1>Movie Recommender System</h1>
+                <p>
+                    An AI-powered Movie Recommender System built with Python, Flask, and TMDB API. It recommends similar movies using Machine Learning and cosine similarity, featuring fast recommendations, movie posters, autocomplete search, and a clean, responsive user interface.
+                </p>
+                <div class="buttons">
+                    <a href="https://github.com/Abdulla1202/Movie-Recomendetion-System"
+                        target="_blank" class="btn">GitHub</a>
+                    <a href="https://cinematch-mocha.vercel.app/"
+                        target="_blank" class="btn live">Live Demo</a>
+                </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="projects-item scroll-animate">
+                <h1>Todo App</h1>
+                <p>
+                    A Django-based Todo App that enables users to register, log in, and manage their daily tasks efficiently. It supports task creation, editing, and deletion with secure authentication, offering a clean, responsive, and user-friendly interface built using Django, HTML, CSS, and SQLite.
+                </p>
+                <div class="buttons">
+                    <a href="https://github.com/Abdulla1202/Django-projects"
+                        target="_blank" class="btn">GitHub</a>
+                    <a href="https://taskflow-todo-j167.onrender.com/"
+                        target="_blank" class="btn live">Live Demo</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Contact Me Section -->
+    <section id="Contact">
+        <h1 class="section-title scroll-animate">Contact Me</h1>
+        <div class="contact-container scroll-animate">
+            <div class="form" id="contactForm">
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="form-div">
+                        <input type="text" name="name" id="name" class="poppins" placeholder="Enter Your Name">
+                    </div>
+                    <div class="form-div">
+                        <input type="email" name="email" id="email" class="poppins" placeholder="Enter Your Email" required>
+                    </div>
+                    <div class="form-div">
+                        <input type="tel" name="number" id="phone" class="poppins" placeholder="Enter Your Phone" required>
+                    </div>
+                    <div class="form-div">
+                        <textarea name="content" id="textarea" cols="30" rows="6" class="poppins" placeholder="Enter Your Message"></textarea>
+                    </div>
+                    <button type="submit" class="btn poppins" id="submit">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer id="footer">
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#Projects">Projects</a></li>
+            <li><a href="#Contact">Contact</a></li>
+        </ul>
+        <ul class="font-awesome">
+            <li>
+                <a href="https://www.linkedin.com/in/abdulla-ansari-62910b296/" target="_blank">
+                    <i class="fa-brands fa-linkedin-in"></i>
+                </a>
+            </li>
+            <li>
+                <a href="https://github.com/Abdulla1202" target="_blank">
+                    <i class="fa-brands fa-github"></i>
+                </a>
+            </li>
+            <li>
+                <a href="https://x.com/home" target="_blank">
+                    <i class="fa-brands fa-twitter"></i>
+                </a>
+            </li>
+        </ul>
+        <p>
+            © 2026 <span class="cpy-white poppins">Abdulla Ansari</span> • Built with ❤️ and Code.
+        </p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // ===== Typewriter Effect =====
+        const name = "Abdulla Ansari";
+        const typedElement = document.getElementById('typed-name');
+        let charIndex = 0;
+
+        function typeWriter() {
+            if (charIndex < name.length) {
+                typedElement.textContent += name.charAt(charIndex);
+                charIndex++;
+                setTimeout(typeWriter, 120);
+            }
+        }
+
+        // Start typing after a small delay
+        setTimeout(typeWriter, 600);
+
+        // ===== Navbar Scroll Effect =====
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // ===== Mobile Menu Toggle =====
+        function toggleMenu() {
+            document.getElementById('hamburger').classList.toggle('active');
+            document.getElementById('rightNav').classList.toggle('active');
+        }
+
+        function closeMenu() {
+            document.getElementById('hamburger').classList.remove('active');
+            document.getElementById('rightNav').classList.remove('active');
+        }
+
+        // ===== Scroll Animations (Intersection Observer) =====
+        const scrollElements = document.querySelectorAll('.scroll-animate');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+
+                    // Animate skill bars when skills section is visible
+                    if (entry.target.closest('#skills') || entry.target.querySelector('#skillBars')) {
+                        const bars = document.querySelectorAll('.java, .html, .css, .js, .python, .mysql');
+                        bars.forEach((bar, index) => {
+                            setTimeout(() => {
+                                bar.classList.add('animate');
+                            }, index * 150);
+                        });
+                    }
+                }
+            });
+        }, {
+            threshold: 0.15,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        scrollElements.forEach(el => observer.observe(el));
+
+        // ===== Auto-hide Django messages =====
+        const messages = document.querySelectorAll('.django-message');
+        messages.forEach(msg => {
+            setTimeout(() => {
+                msg.style.opacity = '0';
+                msg.style.transform = 'translateX(30px)';
+                setTimeout(() => msg.remove(), 400);
+            }, 4000);
+        });
+    </script>
+
+</body>
+</html>

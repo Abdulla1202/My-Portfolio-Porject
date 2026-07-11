@@ -1,0 +1,15 @@
+databases: []
+
+services:
+  - type: web
+    name: abdulla-ansari-portfolio
+    runtime: python
+    buildCommand: "./build.sh"
+    startCommand: "cd portfolio && gunicorn portfolio.wsgi:application"
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.11.6"
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DEBUG
+        value: "False"
