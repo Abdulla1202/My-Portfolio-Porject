@@ -578,7 +578,7 @@ body::before {
 }
 
 .bar {
-    margin: 1.8rem 0;
+    margin: 2.5rem 0;
     position: relative;
 }
 
@@ -602,7 +602,7 @@ body::before {
 .java, .html, .css, .js, .python, .mysql {
     height: 6px;
     border-radius: 12px;
-    margin: 1rem 0;
+    margin: 1.8rem 0;
     position: relative;
     background: rgba(255, 255, 255, 0.06);
 }
