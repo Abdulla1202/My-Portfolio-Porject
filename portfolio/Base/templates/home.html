@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abdulla Ansari | Data Analyst Portfolio</title>
-    <meta name="description" content="Portfolio of Abdulla Ansari — Data Analyst skilled in Python, SQL, Power BI, Excel, and Machine Learning.">
+    <title>Abdulla Ansari | Data Analyst & ML Engineer</title>
+    <meta name="description" content="Portfolio of Abdulla Ansari — Data Analyst, Django Developer & ML Engineer.">
     <link rel="icon" type="image/x-icon" href="./Images/favicon.jpeg">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -46,11 +46,10 @@
         </div>
         <div class="right-nav" id="rightNav">
             <ul>
-                <li><a href="#home" onclick="closeMenu()">Home <i class="fa-solid fa-house"></i></a></li>
-                <li><a href="#about" onclick="closeMenu()">About Me <i class="fa-solid fa-user"></i></a></li>
-                <li><a href="#skills" onclick="closeMenu()">Skills <i class="fa-solid fa-code"></i></a></li>
-                <li><a href="#Projects" onclick="closeMenu()">Projects <i class="fas fa-project-diagram"></i></a></li>
-                <li><a href="#Contact" onclick="closeMenu()">Contact <i class="fa-solid fa-rocket"></i></a></li>
+                <li><a href="#home" onclick="closeMenu()">Home</a></li>
+                <li><a href="#skills" onclick="closeMenu()">Skills</a></li>
+                <li><a href="#Projects" onclick="closeMenu()">Projects</a></li>
+                <li><a href="#Contact" onclick="closeMenu()">Contact</a></li>
             </ul>
         </div>
     </nav>
@@ -61,12 +60,17 @@
             <div class="home-content">
                 <h6>Hi, I'm</h6>
                 <h1><span id="typed-name"></span><span class="cursor-blink"></span></h1>
-                <h4>Data Analyst & ML Engineer</h4>
+                <div class="role-typing">
+                    <span class="role-prefix">&gt;</span>
+                    <span id="typed-role"></span>
+                    <span class="role-cursor"></span>
+                </div>
+                <p class="subtitle-text">Building digital experiences that merge creativity with technology. Specializing in data analytics, machine learning and web development.</p>
                 <div class="home-buttons">
                     <a href="{% static 'pdf/resume.pdf' %}" target="_blank">
                         <button class="btn poppins">Resume</button>
                     </a>
-                    <a class="btn live poppins" href="#Contact">Hire Me</a>
+                    <a class="btn live poppins" href="#Contact">Let's Connect</a>
                 </div>
             </div>
         </div>
@@ -111,7 +115,7 @@
 
     <!-- Skills Section -->
     <section id="skills">
-        <h1 class="section-title scroll-animate">Skills</h1>
+        <h1 class="section-title scroll-animate">Technical Expertise</h1>
         <div class="services-container scroll-animate">
             <div class="skills-left">
                 <img src="{% static 'images/pro.png' %}" alt="Skills">
@@ -120,27 +124,27 @@
                 <div class="skillss-container" id="skillBars">
                     <div class="java bar p-relative">
                         <span class="bar-content left t-white">Power BI</span>
-                        <span class="bar-content right-skills t-white">90%</span>
+                        <span class="bar-content right-skills">90%</span>
                     </div>
                     <div class="html bar p-relative">
                         <span class="bar-content left t-white">Python</span>
-                        <span class="bar-content right-skills t-white">90%</span>
+                        <span class="bar-content right-skills">90%</span>
                     </div>
                     <div class="css bar p-relative">
                         <span class="bar-content left t-white">Excel</span>
-                        <span class="bar-content right-skills t-white">80%</span>
+                        <span class="bar-content right-skills">80%</span>
                     </div>
                     <div class="js bar p-relative">
                         <span class="bar-content left t-white">Django</span>
-                        <span class="bar-content right-skills t-white">60%</span>
+                        <span class="bar-content right-skills">60%</span>
                     </div>
                     <div class="python bar p-relative">
                         <span class="bar-content left t-white">CSS</span>
-                        <span class="bar-content right-skills t-white">50%</span>
+                        <span class="bar-content right-skills">50%</span>
                     </div>
                     <div class="mysql bar p-relative">
                         <span class="bar-content left t-white">MySQL</span>
-                        <span class="bar-content right-skills t-white">40%</span>
+                        <span class="bar-content right-skills">40%</span>
                     </div>
                 </div>
             </div>
@@ -191,16 +195,16 @@
                 <form method="post">
                     {% csrf_token %}
                     <div class="form-div">
-                        <input type="text" name="name" id="name" class="poppins" placeholder="Enter Your Name">
+                        <input type="text" name="name" id="name" class="poppins" placeholder="Your Name">
                     </div>
                     <div class="form-div">
-                        <input type="email" name="email" id="email" class="poppins" placeholder="Enter Your Email" required>
+                        <input type="email" name="email" id="email" class="poppins" placeholder="Your Email" required>
                     </div>
                     <div class="form-div">
-                        <input type="tel" name="number" id="phone" class="poppins" placeholder="Enter Your Phone" required>
+                        <input type="tel" name="number" id="phone" class="poppins" placeholder="Your Phone" required>
                     </div>
                     <div class="form-div">
-                        <textarea name="content" id="textarea" cols="30" rows="6" class="poppins" placeholder="Enter Your Message"></textarea>
+                        <textarea name="content" id="textarea" cols="30" rows="5" class="poppins" placeholder="Your Message"></textarea>
                     </div>
                     <button type="submit" class="btn poppins" id="submit">Send Message</button>
                 </form>
@@ -234,40 +238,79 @@
                 </a>
             </li>
         </ul>
-        <p>
-            © 2026 <span class="cpy-white poppins">Abdulla Ansari</span> • Built with ❤️ and Code.
-        </p>
+        <p>© 2026 <span class="cpy-white poppins">Abdulla Ansari</span> • All rights reserved.</p>
     </footer>
 
     <!-- JavaScript -->
     <script>
-        // ===== Typewriter Effect =====
-        const name = "Abdulla Ansari";
-        const typedElement = document.getElementById('typed-name');
-        let charIndex = 0;
+        // ===== Name Typewriter Effect =====
+        const nameText = "Abdulla Ansari";
+        const typedNameEl = document.getElementById('typed-name');
+        let nameIndex = 0;
 
-        function typeWriter() {
-            if (charIndex < name.length) {
-                typedElement.textContent += name.charAt(charIndex);
-                charIndex++;
-                setTimeout(typeWriter, 120);
+        function typeName() {
+            if (nameIndex < nameText.length) {
+                typedNameEl.textContent += nameText.charAt(nameIndex);
+                nameIndex++;
+                setTimeout(typeName, 100);
+            } else {
+                // Name done, start role typing after a pause
+                setTimeout(startRoleTyping, 800);
             }
         }
 
-        // Start typing after a small delay
-        setTimeout(typeWriter, 600);
+        // Start name typing
+        setTimeout(typeName, 500);
+
+        // ===== Role Cycling Typewriter Effect =====
+        const roles = ["Data Analyst", "Django Developer", "ML Engineer"];
+        const typedRoleEl = document.getElementById('typed-role');
+        let roleIndex = 0;
+        let roleCharIndex = 0;
+        let isDeleting = false;
+
+        function startRoleTyping() {
+            typeRole();
+        }
+
+        function typeRole() {
+            const currentRole = roles[roleIndex];
+
+            if (!isDeleting) {
+                // Typing forward
+                typedRoleEl.textContent = currentRole.substring(0, roleCharIndex + 1);
+                roleCharIndex++;
+
+                if (roleCharIndex === currentRole.length) {
+                    // Finished typing, pause then delete
+                    isDeleting = true;
+                    setTimeout(typeRole, 2000);
+                    return;
+                }
+                setTimeout(typeRole, 80);
+            } else {
+                // Deleting backward
+                typedRoleEl.textContent = currentRole.substring(0, roleCharIndex - 1);
+                roleCharIndex--;
+
+                if (roleCharIndex === 0) {
+                    // Finished deleting, move to next role
+                    isDeleting = false;
+                    roleIndex = (roleIndex + 1) % roles.length;
+                    setTimeout(typeRole, 400);
+                    return;
+                }
+                setTimeout(typeRole, 50);
+            }
+        }
 
         // ===== Navbar Scroll Effect =====
         const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
+            navbar.classList.toggle('scrolled', window.scrollY > 50);
         });
 
-        // ===== Mobile Menu Toggle =====
+        // ===== Mobile Menu =====
         function toggleMenu() {
             document.getElementById('hamburger').classList.toggle('active');
             document.getElementById('rightNav').classList.toggle('active');
@@ -278,35 +321,25 @@
             document.getElementById('rightNav').classList.remove('active');
         }
 
-        // ===== Scroll Animations (Intersection Observer) =====
+        // ===== Scroll Animations =====
         const scrollElements = document.querySelectorAll('.scroll-animate');
-
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('animate-in');
-
-                    // Animate skill bars when skills section is visible
                     if (entry.target.closest('#skills') || entry.target.querySelector('#skillBars')) {
                         const bars = document.querySelectorAll('.java, .html, .css, .js, .python, .mysql');
-                        bars.forEach((bar, index) => {
-                            setTimeout(() => {
-                                bar.classList.add('animate');
-                            }, index * 150);
+                        bars.forEach((bar, i) => {
+                            setTimeout(() => bar.classList.add('animate'), i * 150);
                         });
                     }
                 }
             });
-        }, {
-            threshold: 0.15,
-            rootMargin: '0px 0px -50px 0px'
-        });
-
+        }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
         scrollElements.forEach(el => observer.observe(el));
 
-        // ===== Auto-hide Django messages =====
-        const messages = document.querySelectorAll('.django-message');
-        messages.forEach(msg => {
+        // ===== Auto-hide Messages =====
+        document.querySelectorAll('.django-message').forEach(msg => {
             setTimeout(() => {
                 msg.style.opacity = '0';
                 msg.style.transform = 'translateX(30px)';
