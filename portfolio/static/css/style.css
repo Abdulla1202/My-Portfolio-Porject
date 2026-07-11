@@ -605,7 +605,6 @@ body::before {
     margin: 1rem 0;
     position: relative;
     background: rgba(255, 255, 255, 0.06);
-    overflow: hidden;
 }
 
 .java::after, .html::after, .css::after, .js::after, .python::after, .mysql::after {
