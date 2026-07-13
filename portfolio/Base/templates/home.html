@@ -12,24 +12,18 @@
 </head>
 <body>
 
-    <!-- Background Gradient Mesh -->
+    <!-- Background -->
     <div class="bg-mesh">
         <div class="orb"></div>
         <div class="orb"></div>
         <div class="orb"></div>
     </div>
-
-    <!-- Floating Particles -->
     <div class="particles">
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
+        <div class="particle"></div><div class="particle"></div><div class="particle"></div>
+        <div class="particle"></div><div class="particle"></div><div class="particle"></div>
     </div>
 
-    <!-- Django Messages -->
+    <!-- Messages -->
     {% if messages %}
     <div class="django-messages">
         {% for message in messages %}
@@ -40,13 +34,9 @@
 
     <!-- Navbar -->
     <nav id="navbar">
-        <div class="left-nav">
-            <h2>Portfolio</h2>
-        </div>
+        <div class="left-nav"><h2>Portfolio</h2></div>
         <div class="hamburger" id="hamburger" onclick="toggleMenu()">
-            <span></span>
-            <span></span>
-            <span></span>
+            <span></span><span></span><span></span>
         </div>
         <div class="right-nav" id="rightNav">
             <ul>
@@ -60,7 +50,7 @@
         </div>
     </nav>
 
-    <!-- Home Section -->
+    <!-- Home -->
     <section id="home">
         <div class="home-left">
             <div class="home-content">
@@ -73,8 +63,12 @@
                 </div>
                 <p class="subtitle-text">Building digital experiences that merge creativity with technology. Specializing in data analytics, machine learning and web development.</p>
                 <div class="home-buttons">
-                    <a href="{% static 'pdf/resume.pdf' %}" target="_blank" class="btn poppins">Resume</a>
-                    <a class="btn btn-primary poppins" href="#Contact">Let's Connect</a>
+                    <a href="{% static 'pdf/resume.pdf' %}" target="_blank" class="btn">
+                        <i class="fa-solid fa-download"></i> Resume
+                    </a>
+                    <a class="btn btn-primary" href="#Contact">
+                        <i class="fa-solid fa-paper-plane"></i> Let's Connect
+                    </a>
                 </div>
             </div>
         </div>
@@ -85,13 +79,13 @@
         </div>
     </section>
 
-    <!-- About Section -->
+    <!-- About -->
     <section id="about" class="section">
         <h2 class="section-title scroll-animate">About Me</h2>
         <div class="about-container scroll-animate">
             <div class="about-left">
                 <div class="about-img-frame">
-                    <img src="{% static 'images/dog.png' %}" alt="About Abdulla Ansari">
+                    <img src="{% static 'images/about-illustration.png' %}" alt="About Abdulla Ansari">
                 </div>
             </div>
             <div class="about-right">
@@ -106,7 +100,8 @@
                     </p>
                     <p>
                         During my internship at <strong>UdyamKart</strong>, I worked with real-world business data, 
-                        created interactive dashboards, analyzed customer behavior, and helped improve reporting efficiency.
+                        created interactive dashboards, and helped improve reporting efficiency. I am continuously 
+                        improving my skills in <strong>Machine Learning, Generative AI, and Data Analytics</strong>.
                     </p>
 
                     <div class="about-stats">
@@ -127,125 +122,127 @@
                             <span class="stat-label">Certificates</span>
                         </div>
                     </div>
-                    <a class="btn" href="#Contact">Hire Me</a>
+                    <a class="btn btn-primary" href="#Contact"><i class="fa-solid fa-handshake"></i> Hire Me</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Experience Section -->
+    <!-- Experience -->
     <section id="experience" class="section">
         <h2 class="section-title scroll-animate">Experience</h2>
         <div class="experience-timeline">
-
             <div class="exp-card scroll-animate">
-                <div class="exp-dot"></div>
+                <div class="exp-badge">LATEST</div>
                 <div class="exp-content">
                     <div class="exp-header">
-                        <h3>Data Analyst Intern</h3>
+                        <div>
+                            <h3>Data Analyst Intern</h3>
+                            <h4 class="exp-company"><i class="fa-solid fa-building"></i> UdyamKart</h4>
+                        </div>
                         <span class="exp-date"><i class="fa-regular fa-calendar"></i> Jan 2025 – Apr 2025</span>
                     </div>
-                    <h4 class="exp-company"><i class="fa-solid fa-building"></i> UdyamKart</h4>
                     <ul class="exp-list">
-                        <li>Analyzed business data using Python, SQL, and Power BI to create interactive dashboards</li>
-                        <li>Performed customer behavior analysis and improved reporting efficiency</li>
-                        <li>Worked with real-world datasets for data cleaning, EDA, and visualization</li>
-                        <li>Built live API-powered Power BI dashboards for business decision making</li>
+                        <li>Analyzed business data using Python, SQL, and Power BI to create interactive dashboards for decision making</li>
+                        <li>Performed customer behavior analysis and identified key trends to improve business strategies</li>
+                        <li>Created automated reports and visualizations that improved reporting efficiency by streamlining data workflows</li>
+                        <li>Worked with real-world datasets for data cleaning, exploratory data analysis, and data visualization</li>
+                        <li>Built live API-powered Power BI dashboards for real-time business monitoring</li>
                     </ul>
                     <div class="exp-tags">
-                        <span>Python</span><span>SQL</span><span>Power BI</span><span>Excel</span><span>Data Analysis</span>
+                        <span>Python</span><span>SQL</span><span>Power BI</span><span>Excel</span><span>Data Analysis</span><span>EDA</span>
                     </div>
                 </div>
             </div>
-
-            <div class="exp-card scroll-animate">
-                <div class="exp-dot"></div>
-                <div class="exp-content">
-                    <div class="exp-header">
-                        <h3>B.Tech Information Technology</h3>
-                        <span class="exp-date"><i class="fa-regular fa-calendar"></i> 2022 – 2026</span>
-                    </div>
-                    <h4 class="exp-company"><i class="fa-solid fa-graduation-cap"></i> University Education</h4>
-                    <ul class="exp-list">
-                        <li>Pursuing B.Tech in Information Technology</li>
-                        <li>Learning Machine Learning, Generative AI, and Advanced Data Analytics</li>
-                        <li>Built projects including Movie Recommender System, Django Todo App</li>
-                        <li>Developed skills in Python, Django, SQL, Power BI, and CSS</li>
-                    </ul>
-                    <div class="exp-tags">
-                        <span>Machine Learning</span><span>Django</span><span>Gen AI</span><span>Python</span>
-                    </div>
-                </div>
-            </div>
-
         </div>
     </section>
 
-    <!-- Skills Section (Card Grid) -->
+    <!-- Skills — Category Grid -->
     <section id="skills" class="section">
         <h2 class="section-title scroll-animate">Technical Expertise</h2>
-        <div class="skills-grid">
+        <div class="skills-category-grid">
 
-            <div class="skill-card scroll-animate">
-                <div class="skill-icon" style="--glow-color: #3572A5;">
-                    <i class="fa-brands fa-python"></i>
+            <!-- Data Analytics -->
+            <div class="skill-category-card scroll-animate">
+                <div class="category-header">
+                    <div class="category-icon" style="background:rgba(0,255,136,.1);color:#00ff88;">
+                        <i class="fa-solid fa-chart-pie"></i>
+                    </div>
+                    <h4>Data Analytics</h4>
                 </div>
-                <h4>Python</h4>
-                <p>Data Analysis, ML, Automation</p>
+                <div class="category-tags">
+                    <span>Power BI</span>
+                    <span>Excel</span>
+                    <span>Data Visualization</span>
+                    <span>EDA</span>
+                    <span>Reporting</span>
+                    <span>DAX</span>
+                </div>
             </div>
 
-            <div class="skill-card scroll-animate">
-                <div class="skill-icon" style="--glow-color: #f7df1e;">
-                    <i class="fa-solid fa-chart-line"></i>
+            <!-- Programming -->
+            <div class="skill-category-card scroll-animate">
+                <div class="category-header">
+                    <div class="category-icon" style="background:rgba(0,212,255,.1);color:#00d4ff;">
+                        <i class="fa-solid fa-code"></i>
+                    </div>
+                    <h4>Programming</h4>
                 </div>
-                <h4>Power BI</h4>
-                <p>Dashboards, DAX, Reports</p>
+                <div class="category-tags">
+                    <span>Python</span>
+                    <span>SQL</span>
+                    <span>HTML</span>
+                    <span>CSS</span>
+                    <span>JavaScript</span>
+                </div>
             </div>
 
-            <div class="skill-card scroll-animate">
-                <div class="skill-icon" style="--glow-color: #00758f;">
-                    <i class="fa-solid fa-database"></i>
+            <!-- AI & ML -->
+            <div class="skill-category-card scroll-animate">
+                <div class="category-header">
+                    <div class="category-icon" style="background:rgba(168,85,247,.1);color:#a855f7;">
+                        <i class="fa-solid fa-brain"></i>
+                    </div>
+                    <h4>AI & ML</h4>
                 </div>
-                <h4>MySQL</h4>
-                <p>Queries, Joins, Optimization</p>
+                <div class="category-tags">
+                    <span>Machine Learning</span>
+                    <span>Scikit-learn</span>
+                    <span>Pandas</span>
+                    <span>NumPy</span>
+                    <span>Gen AI</span>
+                </div>
             </div>
 
-            <div class="skill-card scroll-animate">
-                <div class="skill-icon" style="--glow-color: #217346;">
-                    <i class="fa-solid fa-file-excel"></i>
+            <!-- Tools & Frameworks -->
+            <div class="skill-category-card scroll-animate">
+                <div class="category-header">
+                    <div class="category-icon" style="background:rgba(251,146,60,.1);color:#fb923c;">
+                        <i class="fa-solid fa-screwdriver-wrench"></i>
+                    </div>
+                    <h4>Tools & Frameworks</h4>
                 </div>
-                <h4>Excel</h4>
-                <p>Pivot Tables, VLOOKUP, Charts</p>
-            </div>
-
-            <div class="skill-card scroll-animate">
-                <div class="skill-icon" style="--glow-color: #092e20;">
-                    <i class="fa-solid fa-code"></i>
+                <div class="category-tags">
+                    <span>Django</span>
+                    <span>MySQL</span>
+                    <span>Git</span>
+                    <span>GitHub</span>
+                    <span>Jupyter</span>
+                    <span>VS Code</span>
                 </div>
-                <h4>Django</h4>
-                <p>Web Apps, REST APIs, Auth</p>
-            </div>
-
-            <div class="skill-card scroll-animate">
-                <div class="skill-icon" style="--glow-color: #ff6f00;">
-                    <i class="fa-solid fa-brain"></i>
-                </div>
-                <h4>Machine Learning</h4>
-                <p>Scikit-learn, Pandas, NumPy</p>
             </div>
 
         </div>
     </section>
 
-    <!-- Projects Section -->
+    <!-- Projects -->
     <section id="Projects" class="section">
         <h2 class="section-title scroll-animate">Projects</h2>
         <div class="projects-container">
-
             <div class="project-card scroll-animate">
                 <div class="project-icon"><i class="fa-solid fa-film"></i></div>
                 <h3>Movie Recommender System</h3>
-                <p>An AI-powered Movie Recommender built with Python, Flask, and TMDB API. Uses ML cosine similarity for recommendations with autocomplete search and responsive UI.</p>
+                <p>An AI-powered Movie Recommender built with Python, Flask, and TMDB API. Uses ML cosine similarity for smart recommendations with autocomplete search and responsive UI.</p>
                 <div class="project-tags">
                     <span>Python</span><span>Flask</span><span>ML</span><span>TMDB API</span>
                 </div>
@@ -258,7 +255,7 @@
             <div class="project-card scroll-animate">
                 <div class="project-icon"><i class="fa-solid fa-list-check"></i></div>
                 <h3>Todo App</h3>
-                <p>A Django-based Todo App with user authentication, task CRUD operations, and a clean responsive interface. Built using Django, HTML, CSS, and SQLite.</p>
+                <p>A Django-based Todo App with user authentication, task CRUD operations, and a clean responsive interface. Built with Django, HTML, CSS, and SQLite database.</p>
                 <div class="project-tags">
                     <span>Django</span><span>HTML/CSS</span><span>SQLite</span><span>Auth</span>
                 </div>
@@ -267,30 +264,21 @@
                     <a href="https://taskflow-todo-j167.onrender.com/" target="_blank" class="btn btn-primary btn-sm"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live</a>
                 </div>
             </div>
-
         </div>
     </section>
 
-    <!-- Contact Section -->
+    <!-- Contact -->
     <section id="Contact" class="section">
         <h2 class="section-title scroll-animate">Contact Me</h2>
         <div class="contact-container scroll-animate">
             <div class="contact-form-card">
                 <form method="post">
                     {% csrf_token %}
-                    <div class="form-group">
-                        <input type="text" name="name" id="name" placeholder="Your Name" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" name="email" id="email" placeholder="Your Email" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="tel" name="number" id="phone" placeholder="Your Phone" required>
-                    </div>
-                    <div class="form-group">
-                        <textarea name="content" id="textarea" rows="5" placeholder="Your Message"></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary btn-full" id="submit">Send Message</button>
+                    <div class="form-group"><input type="text" name="name" id="name" placeholder="Your Name" required></div>
+                    <div class="form-group"><input type="email" name="email" id="email" placeholder="Your Email" required></div>
+                    <div class="form-group"><input type="tel" name="number" id="phone" placeholder="Your Phone" required></div>
+                    <div class="form-group"><textarea name="content" id="textarea" rows="5" placeholder="Your Message"></textarea></div>
+                    <button type="submit" class="btn btn-primary btn-full" id="submit"><i class="fa-solid fa-paper-plane"></i> Send Message</button>
                 </form>
             </div>
         </div>
@@ -315,83 +303,39 @@
     </footer>
 
     <script>
-        // ===== Typewriter — Name =====
-        const nameText = "Abdulla Ansari";
-        const typedNameEl = document.getElementById('typed-name');
-        let nameIdx = 0;
-        function typeName() {
-            if (nameIdx < nameText.length) {
-                typedNameEl.textContent += nameText.charAt(nameIdx);
-                nameIdx++;
-                setTimeout(typeName, 100);
-            } else { setTimeout(startRoleTyping, 600); }
+        // Typewriter — Name
+        const nameText="Abdulla Ansari", typedNameEl=document.getElementById('typed-name');
+        let nI=0;
+        function typeName(){
+            if(nI<nameText.length){typedNameEl.textContent+=nameText.charAt(nI);nI++;setTimeout(typeName,100)}
+            else setTimeout(startRoleTyping,600);
         }
-        setTimeout(typeName, 400);
+        setTimeout(typeName,400);
 
-        // ===== Typewriter — Roles =====
-        const roles = ["Data Analyst", "Django Developer", "ML Engineer"];
-        const typedRoleEl = document.getElementById('typed-role');
-        let rIdx = 0, rCharIdx = 0, isDel = false;
-        function startRoleTyping() { typeRole(); }
-        function typeRole() {
-            const cur = roles[rIdx];
-            if (!isDel) {
-                typedRoleEl.textContent = cur.substring(0, rCharIdx + 1);
-                rCharIdx++;
-                if (rCharIdx === cur.length) { isDel = true; setTimeout(typeRole, 2000); return; }
-                setTimeout(typeRole, 80);
-            } else {
-                typedRoleEl.textContent = cur.substring(0, rCharIdx - 1);
-                rCharIdx--;
-                if (rCharIdx === 0) { isDel = false; rIdx = (rIdx + 1) % roles.length; setTimeout(typeRole, 400); return; }
-                setTimeout(typeRole, 50);
-            }
+        // Typewriter — Roles
+        const roles=["Data Analyst","Django Developer","ML Engineer"], typedRoleEl=document.getElementById('typed-role');
+        let rI=0,rC=0,del=false;
+        function startRoleTyping(){typeRole()}
+        function typeRole(){
+            const c=roles[rI];
+            if(!del){typedRoleEl.textContent=c.substring(0,rC+1);rC++;if(rC===c.length){del=true;setTimeout(typeRole,2000);return}setTimeout(typeRole,80)}
+            else{typedRoleEl.textContent=c.substring(0,rC-1);rC--;if(rC===0){del=false;rI=(rI+1)%roles.length;setTimeout(typeRole,400);return}setTimeout(typeRole,50)}
         }
 
-        // ===== Navbar Scroll =====
-        window.addEventListener('scroll', () => {
-            document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
-        });
+        // Navbar scroll
+        window.addEventListener('scroll',()=>{document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>50)});
 
-        // ===== Mobile Menu =====
-        function toggleMenu() {
-            document.getElementById('hamburger').classList.toggle('active');
-            document.getElementById('rightNav').classList.toggle('active');
-            document.body.classList.toggle('menu-open');
-        }
-        function closeMenu() {
-            document.getElementById('hamburger').classList.remove('active');
-            document.getElementById('rightNav').classList.remove('active');
-            document.body.classList.remove('menu-open');
-        }
+        // Mobile menu
+        function toggleMenu(){document.getElementById('hamburger').classList.toggle('active');document.getElementById('rightNav').classList.toggle('active');document.body.classList.toggle('menu-open')}
+        function closeMenu(){document.getElementById('hamburger').classList.remove('active');document.getElementById('rightNav').classList.remove('active');document.body.classList.remove('menu-open')}
 
-        // ===== Scroll Animations + Counters =====
-        let statsAnimated = false;
-        const obs = new IntersectionObserver((entries) => {
-            entries.forEach(e => {
-                if (e.isIntersecting) {
-                    e.target.classList.add('animate-in');
-                    if (e.target.closest('#about') && !statsAnimated) {
-                        statsAnimated = true;
-                        document.querySelectorAll('.stat-number').forEach(c => {
-                            const t = +c.dataset.target, dur = 1200, step = t / (dur / 30);
-                            let v = 0;
-                            const timer = setInterval(() => {
-                                v += step;
-                                if (v >= t) { c.textContent = t; clearInterval(timer); }
-                                else c.textContent = Math.floor(v);
-                            }, 30);
-                        });
-                    }
-                }
-            });
-        }, { threshold: 0.1 });
-        document.querySelectorAll('.scroll-animate').forEach(el => obs.observe(el));
+        // Scroll animations + counters
+        let statsA=false;
+        const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('animate-in');if(e.target.closest('#about')&&!statsA){statsA=true;document.querySelectorAll('.stat-number').forEach(c=>{const t=+c.dataset.target,step=t/(1200/30);let v=0;const ti=setInterval(()=>{v+=step;if(v>=t){c.textContent=t;clearInterval(ti)}else c.textContent=Math.floor(v)},30)})}}})},{threshold:.1});
+        document.querySelectorAll('.scroll-animate').forEach(el=>obs.observe(el));
 
-        // ===== Auto-hide Messages =====
-        document.querySelectorAll('.django-message').forEach(m => {
-            setTimeout(() => { m.style.opacity='0'; setTimeout(() => m.remove(), 400); }, 4000);
-        });
+        // Auto-hide messages
+        document.querySelectorAll('.django-message').forEach(m=>{setTimeout(()=>{m.style.opacity='0';setTimeout(()=>m.remove(),400)},4000)});
     </script>
 </body>
 </html>
