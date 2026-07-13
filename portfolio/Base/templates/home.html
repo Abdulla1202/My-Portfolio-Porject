@@ -1,6 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -27,16 +27,28 @@
     {% if messages %}
     <div class="django-messages">
         {% for message in messages %}
-        <div class="django-message {{ message.tags }}">{{ message }}</div>
+        <div class="django-message {{ message.tags }}">
+            <i class="fa-solid {% if message.tags == 'success' %}fa-circle-check{% else %}fa-circle-exclamation{% endif %}"></i>
+            {{ message }}
+        </div>
         {% endfor %}
     </div>
     {% endif %}
 
     <!-- Navbar -->
     <nav id="navbar">
-        <div class="left-nav"><h2>Portfolio</h2></div>
-        <div class="hamburger" id="hamburger" onclick="toggleMenu()">
-            <span></span><span></span><span></span>
+        <div class="left-nav">
+            <a href="#home" class="logo">
+                <span class="logo-bracket">&lt;</span>AA<span class="logo-bracket">/&gt;</span>
+            </a>
+        </div>
+        <div class="nav-actions">
+            <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" aria-label="Toggle theme">
+                <i class="fa-solid fa-moon" id="themeIcon"></i>
+            </button>
+            <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+                <span></span><span></span><span></span>
+            </div>
         </div>
         <div class="right-nav" id="rightNav">
             <ul>
@@ -54,7 +66,7 @@
     <section id="home">
         <div class="home-left">
             <div class="home-content">
-                <h6>Hi, I'm</h6>
+                <p class="greeting">👋 Hello, I'm</p>
                 <h1><span id="typed-name"></span><span class="cursor-blink"></span></h1>
                 <div class="role-typing">
                     <span class="role-prefix">And I'm a</span>
@@ -69,6 +81,11 @@
                     <a class="btn btn-primary" href="#Contact">
                         <i class="fa-solid fa-paper-plane"></i> Let's Connect
                     </a>
+                </div>
+                <div class="home-socials">
+                    <a href="https://www.linkedin.com/in/abdulla-ansari-62910b296/" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="https://github.com/Abdulla1202" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://x.com/home" target="_blank" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
                 </div>
             </div>
         </div>
@@ -103,7 +120,6 @@
                         created interactive dashboards, and helped improve reporting efficiency. I am continuously 
                         improving my skills in <strong>Machine Learning, Generative AI, and Data Analytics</strong>.
                     </p>
-
                     <div class="about-stats">
                         <div class="stat-item">
                             <span class="stat-number" data-target="5">0</span><span class="stat-plus">+</span>
@@ -156,81 +172,46 @@
         </div>
     </section>
 
-    <!-- Skills — Category Grid -->
+    <!-- Skills -->
     <section id="skills" class="section">
         <h2 class="section-title scroll-animate">Technical Expertise</h2>
         <div class="skills-category-grid">
-
-            <!-- Data Analytics -->
             <div class="skill-category-card scroll-animate">
                 <div class="category-header">
-                    <div class="category-icon" style="background:rgba(0,255,136,.1);color:#00ff88;">
-                        <i class="fa-solid fa-chart-pie"></i>
-                    </div>
+                    <div class="category-icon ci-green"><i class="fa-solid fa-chart-pie"></i></div>
                     <h4>Data Analytics</h4>
                 </div>
                 <div class="category-tags">
-                    <span>Power BI</span>
-                    <span>Excel</span>
-                    <span>Data Visualization</span>
-                    <span>EDA</span>
-                    <span>Reporting</span>
-                    <span>DAX</span>
+                    <span>Power BI</span><span>Excel</span><span>Data Visualization</span><span>EDA</span><span>Reporting</span><span>DAX</span>
                 </div>
             </div>
-
-            <!-- Programming -->
             <div class="skill-category-card scroll-animate">
                 <div class="category-header">
-                    <div class="category-icon" style="background:rgba(0,212,255,.1);color:#00d4ff;">
-                        <i class="fa-solid fa-code"></i>
-                    </div>
+                    <div class="category-icon ci-cyan"><i class="fa-solid fa-code"></i></div>
                     <h4>Programming</h4>
                 </div>
                 <div class="category-tags">
-                    <span>Python</span>
-                    <span>SQL</span>
-                    <span>HTML</span>
-                    <span>CSS</span>
-                    <span>JavaScript</span>
+                    <span>Python</span><span>SQL</span><span>HTML</span><span>CSS</span><span>JavaScript</span>
                 </div>
             </div>
-
-            <!-- AI & ML -->
             <div class="skill-category-card scroll-animate">
                 <div class="category-header">
-                    <div class="category-icon" style="background:rgba(168,85,247,.1);color:#a855f7;">
-                        <i class="fa-solid fa-brain"></i>
-                    </div>
+                    <div class="category-icon ci-purple"><i class="fa-solid fa-brain"></i></div>
                     <h4>AI & ML</h4>
                 </div>
                 <div class="category-tags">
-                    <span>Machine Learning</span>
-                    <span>Scikit-learn</span>
-                    <span>Pandas</span>
-                    <span>NumPy</span>
-                    <span>Gen AI</span>
+                    <span>Machine Learning</span><span>Scikit-learn</span><span>Pandas</span><span>NumPy</span><span>Gen AI</span>
                 </div>
             </div>
-
-            <!-- Tools & Frameworks -->
             <div class="skill-category-card scroll-animate">
                 <div class="category-header">
-                    <div class="category-icon" style="background:rgba(251,146,60,.1);color:#fb923c;">
-                        <i class="fa-solid fa-screwdriver-wrench"></i>
-                    </div>
+                    <div class="category-icon ci-orange"><i class="fa-solid fa-screwdriver-wrench"></i></div>
                     <h4>Tools & Frameworks</h4>
                 </div>
                 <div class="category-tags">
-                    <span>Django</span>
-                    <span>MySQL</span>
-                    <span>Git</span>
-                    <span>GitHub</span>
-                    <span>Jupyter</span>
-                    <span>VS Code</span>
+                    <span>Django</span><span>MySQL</span><span>Git</span><span>GitHub</span><span>Jupyter</span><span>VS Code</span>
                 </div>
             </div>
-
         </div>
     </section>
 
@@ -250,7 +231,6 @@
                     <a href="https://cinematch-mocha.vercel.app/" target="_blank" class="btn btn-primary btn-sm"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live</a>
                 </div>
             </div>
-
             <div class="project-card scroll-animate">
                 <div class="project-icon"><i class="fa-solid fa-list-check"></i></div>
                 <h3>Todo App</h3>
@@ -270,13 +250,39 @@
     <section id="Contact" class="section">
         <h2 class="section-title scroll-animate">Contact Me</h2>
         <div class="contact-container scroll-animate">
+            <div class="contact-info">
+                <div class="contact-info-item">
+                    <i class="fa-solid fa-envelope"></i>
+                    <div>
+                        <h4>Email</h4>
+                        <p>abdullaansari@email.com</p>
+                    </div>
+                </div>
+                <div class="contact-info-item">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <div>
+                        <h4>Location</h4>
+                        <p>India</p>
+                    </div>
+                </div>
+                <div class="contact-info-item">
+                    <i class="fa-brands fa-linkedin-in"></i>
+                    <div>
+                        <h4>LinkedIn</h4>
+                        <p>Abdulla Ansari</p>
+                    </div>
+                </div>
+            </div>
             <div class="contact-form-card">
+                <h3>Send a Message</h3>
                 <form method="post">
                     {% csrf_token %}
-                    <div class="form-group"><input type="text" name="name" id="name" placeholder="Your Name" required></div>
-                    <div class="form-group"><input type="email" name="email" id="email" placeholder="Your Email" required></div>
+                    <div class="form-row">
+                        <div class="form-group"><input type="text" name="name" id="name" placeholder="Your Name" required></div>
+                        <div class="form-group"><input type="email" name="email" id="email" placeholder="Your Email" required></div>
+                    </div>
                     <div class="form-group"><input type="tel" name="number" id="phone" placeholder="Your Phone" required></div>
-                    <div class="form-group"><textarea name="content" id="textarea" rows="5" placeholder="Your Message"></textarea></div>
+                    <div class="form-group"><textarea name="content" id="textarea" rows="4" placeholder="Your Message"></textarea></div>
                     <button type="submit" class="btn btn-primary btn-full" id="submit"><i class="fa-solid fa-paper-plane"></i> Send Message</button>
                 </form>
             </div>
@@ -285,24 +291,49 @@
 
     <!-- Footer -->
     <footer id="footer">
-        <ul class="footer-nav">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#Projects">Projects</a></li>
-            <li><a href="#Contact">Contact</a></li>
-        </ul>
-        <ul class="social-links">
-            <li><a href="https://www.linkedin.com/in/abdulla-ansari-62910b296/" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a></li>
-            <li><a href="https://github.com/Abdulla1202" target="_blank"><i class="fa-brands fa-github"></i></a></li>
-            <li><a href="https://x.com/home" target="_blank"><i class="fa-brands fa-twitter"></i></a></li>
-        </ul>
-        <p class="copyright">© 2026 <span class="highlight">Abdulla Ansari</span> • All rights reserved.</p>
+        <div class="footer-content">
+            <a href="#home" class="footer-logo">
+                <span class="logo-bracket">&lt;</span>AA<span class="logo-bracket">/&gt;</span>
+            </a>
+            <ul class="footer-nav">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#Projects">Projects</a></li>
+                <li><a href="#Contact">Contact</a></li>
+            </ul>
+            <ul class="social-links">
+                <li><a href="https://www.linkedin.com/in/abdulla-ansari-62910b296/" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a></li>
+                <li><a href="https://github.com/Abdulla1202" target="_blank"><i class="fa-brands fa-github"></i></a></li>
+                <li><a href="https://x.com/home" target="_blank"><i class="fa-brands fa-twitter"></i></a></li>
+            </ul>
+            <div class="footer-divider"></div>
+            <p class="copyright">© 2026 <span class="highlight">Abdulla Ansari</span> • All rights reserved.</p>
+        </div>
     </footer>
 
     <script>
-        // Typewriter — Name
+        // ===== Theme Toggle =====
+        function toggleTheme() {
+            const html = document.documentElement;
+            const current = html.getAttribute('data-theme');
+            const next = current === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', next);
+            localStorage.setItem('theme', next);
+            updateThemeIcon(next);
+        }
+        function updateThemeIcon(theme) {
+            const icon = document.getElementById('themeIcon');
+            icon.className = theme === 'dark' ? 'fa-solid fa-moon' : 'fa-solid fa-sun';
+        }
+        (function() {
+            const saved = localStorage.getItem('theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', saved);
+            updateThemeIcon(saved);
+        })();
+
+        // ===== Typewriter — Name =====
         const nameText="Abdulla Ansari", typedNameEl=document.getElementById('typed-name');
         let nI=0;
         function typeName(){
@@ -311,7 +342,7 @@
         }
         setTimeout(typeName,400);
 
-        // Typewriter — Roles
+        // ===== Typewriter — Roles =====
         const roles=["Data Analyst","Django Developer","ML Engineer"], typedRoleEl=document.getElementById('typed-role');
         let rI=0,rC=0,del=false;
         function startRoleTyping(){typeRole()}
@@ -321,20 +352,34 @@
             else{typedRoleEl.textContent=c.substring(0,rC-1);rC--;if(rC===0){del=false;rI=(rI+1)%roles.length;setTimeout(typeRole,400);return}setTimeout(typeRole,50)}
         }
 
-        // Navbar scroll
+        // ===== Navbar scroll =====
         window.addEventListener('scroll',()=>{document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>50)});
 
-        // Mobile menu
+        // ===== Mobile menu =====
         function toggleMenu(){document.getElementById('hamburger').classList.toggle('active');document.getElementById('rightNav').classList.toggle('active');document.body.classList.toggle('menu-open')}
         function closeMenu(){document.getElementById('hamburger').classList.remove('active');document.getElementById('rightNav').classList.remove('active');document.body.classList.remove('menu-open')}
 
-        // Scroll animations + counters
+        // ===== Scroll animations + counters =====
         let statsA=false;
         const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('animate-in');if(e.target.closest('#about')&&!statsA){statsA=true;document.querySelectorAll('.stat-number').forEach(c=>{const t=+c.dataset.target,step=t/(1200/30);let v=0;const ti=setInterval(()=>{v+=step;if(v>=t){c.textContent=t;clearInterval(ti)}else c.textContent=Math.floor(v)},30)})}}})},{threshold:.1});
         document.querySelectorAll('.scroll-animate').forEach(el=>obs.observe(el));
 
-        // Auto-hide messages
-        document.querySelectorAll('.django-message').forEach(m=>{setTimeout(()=>{m.style.opacity='0';setTimeout(()=>m.remove(),400)},4000)});
+        // ===== Active nav link on scroll =====
+        const sections = document.querySelectorAll('section[id]');
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY + 100;
+            sections.forEach(s => {
+                const top = s.offsetTop, h = s.offsetHeight, id = s.getAttribute('id');
+                const link = document.querySelector('.right-nav a[href="#'+id+'"]');
+                if(link) {
+                    if(scrollY >= top && scrollY < top + h) link.classList.add('active-link');
+                    else link.classList.remove('active-link');
+                }
+            });
+        });
+
+        // ===== Auto-hide messages =====
+        document.querySelectorAll('.django-message').forEach(m=>{setTimeout(()=>{m.style.opacity='0';m.style.transform='translateX(30px)';setTimeout(()=>m.remove(),400)},4000)});
     </script>
 </body>
 </html>
