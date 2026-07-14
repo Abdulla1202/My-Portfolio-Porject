@@ -291,16 +291,20 @@
             </div>
             <div class="contact-form-card">
                 <h3>Send a Message</h3>
-                <form method="post">
-                    {% csrf_token %}
+                <form id="contactForm">
+                    <input type="hidden" name="access_key" value="a2935446-aa90-4804-b6b3-cb0df1bb1ac7">
+                    <input type="hidden" name="subject" value="New message from Portfolio Website">
                     <div class="form-row">
-                        <div class="form-group"><input type="text" name="name" id="name" placeholder="Your Name" required></div>
-                        <div class="form-group"><input type="email" name="email" id="email" placeholder="Your Email" required></div>
+                        <div class="form-group"><input type="text" name="name" placeholder="Your Name" required></div>
+                        <div class="form-group"><input type="email" name="email" placeholder="Your Email" required></div>
                     </div>
-                    <div class="form-group"><input type="tel" name="number" id="phone" placeholder="Your Phone" required></div>
-                    <div class="form-group"><textarea name="content" id="textarea" rows="4" placeholder="Your Message"></textarea></div>
-                    <button type="submit" class="btn btn-primary btn-full" id="submit"><i class="fa-solid fa-paper-plane"></i> Send Message</button>
+                    <div class="form-group"><input type="tel" name="phone" placeholder="Your Phone" required></div>
+                    <div class="form-group"><textarea name="message" rows="4" placeholder="Your Message" required></textarea></div>
+                    <button type="submit" class="btn btn-primary btn-full" id="submitBtn">
+                        <i class="fa-solid fa-paper-plane"></i> <span>Send Message</span>
+                    </button>
                 </form>
+                <div id="formResult" class="form-result" style="display:none;"></div>
             </div>
         </div>
     </section>
@@ -396,6 +400,50 @@
 
         // ===== Auto-hide messages =====
         document.querySelectorAll('.django-message').forEach(m=>{setTimeout(()=>{m.style.opacity='0';m.style.transform='translateX(30px)';setTimeout(()=>m.remove(),400)},4000)});
+
+        // ===== Web3Forms Contact =====
+        const form = document.getElementById('contactForm');
+        const result = document.getElementById('formResult');
+        const submitBtn = document.getElementById('submitBtn');
+
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            submitBtn.disabled = true;
+            submitBtn.querySelector('span').textContent = 'Sending...';
+            submitBtn.querySelector('i').className = 'fa-solid fa-spinner fa-spin';
+
+            const formData = new FormData(form);
+            const obj = Object.fromEntries(formData);
+            const json = JSON.stringify(obj);
+
+            try {
+                const res = await fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                    body: json
+                });
+                const data = await res.json();
+
+                result.style.display = 'block';
+                if (data.success) {
+                    result.className = 'form-result success';
+                    result.innerHTML = '<i class="fa-solid fa-circle-check"></i> Message sent successfully! I\'ll get back to you soon.';
+                    form.reset();
+                } else {
+                    result.className = 'form-result error';
+                    result.innerHTML = '<i class="fa-solid fa-circle-exclamation"></i> Something went wrong. Please try again.';
+                }
+            } catch (err) {
+                result.style.display = 'block';
+                result.className = 'form-result error';
+                result.innerHTML = '<i class="fa-solid fa-circle-exclamation"></i> Network error. Please try again.';
+            }
+
+            submitBtn.disabled = false;
+            submitBtn.querySelector('span').textContent = 'Send Message';
+            submitBtn.querySelector('i').className = 'fa-solid fa-paper-plane';
+            setTimeout(() => { result.style.display = 'none'; }, 5000);
+        });
     </script>
 </body>
 </html>
