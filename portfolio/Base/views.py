@@ -1,16 +1,30 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.contrib import messages
-# from Base import models
-# from Base.models import Contact
-# from django.contrib.auth.decorators import login_required
+from django.views.decorators.csrf import csrf_exempt
+import json
+from .ai_assistant import get_ai_response
 
 def home(request):
     return render(request, 'home.html')
 
+@csrf_exempt
+def chat_api(request):
+    if request.method == "POST":
+        try:
+            data = json.loads(request.body)
+            user_message = data.get('message', '')
+            if not user_message:
+                return JsonResponse({'error': 'Message is required'}, status=400)
 
-# @login_required(login_url='')
+            response_text = get_ai_response(user_message)
+            return JsonResponse({'response': response_text})
+        except Exception as e:
+            return JsonResponse({'error': str(e)}, status=500)
+    return JsonResponse({'error': 'Only POST requests are allowed'}, status=405)
+
 def contact(request):
+
     if request.method == "POST":
         name = request.POST.get('name')
         email = request.POST.get('email')

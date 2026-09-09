@@ -9,6 +9,161 @@
     <meta name="description" content="Portfolio of Abdulla Ansari — AI Engineer.">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* AI Chatbot Styles */
+        .ai-chat-bubble {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(79, 172, 254, 0.4);
+            z-index: 1000;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .ai-chat-bubble:hover {
+            transform: scale(1.1);
+            box-shadow: 0 12px 25px rgba(79, 172, 254, 0.6);
+        }
+        .ai-chat-bubble i {
+            font-size: 28px;
+            color: white;
+        }
+        .ai-chat-window {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            width: 350px;
+            max-width: 90vw;
+            height: 500px;
+            max-height: 70vh;
+            background: rgba(15, 15, 25, 0.95);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            display: none;
+            flex-direction: column;
+            z-index: 1000;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+            animation: slideUp 0.3s ease-out;
+        }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .ai-chat-header {
+            padding: 20px;
+            background: linear-gradient(90deg, #4facfe, #00f2fe);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-weight: 600;
+        }
+        .ai-chat-header i {
+            margin-right: 10px;
+        }
+        .ai-chat-close {
+            cursor: pointer;
+            font-size: 20px;
+            opacity: 0.8;
+            transition: 0.3s;
+        }
+        .ai-chat-close:hover {
+            opacity: 1;
+        }
+        .ai-chat-messages {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
+        }
+        .ai-chat-messages::-webkit-scrollbar {
+            width: 6px;
+        }
+        .ai-chat-messages::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+        .chat-msg {
+            max-width: 80%;
+            padding: 10px 15px;
+            border-radius: 15px;
+            font-size: 14px;
+            line-height: 1.5;
+            word-wrap: break-word;
+        }
+        .chat-msg.user {
+            align-self: flex-end;
+            background: #4facfe;
+            color: white;
+            border-bottom-right-radius: 2px;
+        }
+        .chat-msg.bot {
+            align-self: flex-start;
+            background: rgba(255, 255, 255, 0.1);
+            color: #e0e0e0;
+            border-bottom-left-radius: 2px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .ai-chat-input-area {
+            padding: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            gap: 10px;
+            background: rgba(0, 0, 0, 0.2);
+        }
+        .ai-chat-input {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 10px 15px;
+            border-radius: 10px;
+            color: white;
+            outline: none;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+        .ai-chat-input:focus {
+            border-color: #4facfe;
+            background: rgba(255, 255, 255, 0.1);
+        }
+        .ai-chat-send {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            color: white;
+            cursor: pointer;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .ai-chat-send:hover {
+            transform: scale(1.05);
+            opacity: 0.9;
+        }
+        .typing-indicator {
+            font-size: 12px;
+            color: #aaa;
+            margin-bottom: 10px;
+            display: none;
+            align-self: flex-start;
+        }
+    </style>
 </head>
 <body>
 
@@ -342,8 +497,88 @@
         </div>
     </footer>
 
+    <!-- AI Chatbot -->
+    <div class="ai-chat-bubble" id="chatBubble" onclick="toggleChat()">
+        <i class="fa-solid fa-robot"></i>
+    </div>
+
+    <div class="ai-chat-window" id="chatWindow">
+        <div class="ai-chat-header">
+            <div><i class="fa-solid fa-sparkles"></i> AI Assistant</div>
+            <i class="fa-solid fa-times ai-chat-close" onclick="toggleChat()"></i>
+        </div>
+        <div class="ai-chat-messages" id="chatMessages">
+            <div class="chat-msg bot">Hi there! 👋 I'm Abdulla's AI assistant. Ask me anything about his skills, projects, or experience!</div>
+        </div>
+        <div id="typingIndicator" class="typing-indicator" style="margin-left: 20px;">AI is thinking...</div>
+        <div class="ai-chat-input-area">
+            <input type="text" id="chatInput" class="ai-chat-input" placeholder="Ask me something..." onkeypress="handleChatKey(event)">
+            <button class="ai-chat-send" onclick="sendMessage()">
+                <i class="fa-solid fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+
     <script>
+        // ===== AI Chatbot Logic =====
+        function toggleChat() {
+            const window = document.getElementById('chatWindow');
+            window.style.display = window.style.display === 'flex' ? 'none' : 'flex';
+        }
+
+        function handleChatKey(e) {
+            if (e.key === 'Enter') sendMessage();
+        }
+
+        async function sendMessage() {
+            const input = document.getElementById('chatInput');
+            const messagesDiv = document.getElementById('chatMessages');
+            const typingIndicator = document.getElementById('typingIndicator');
+            const text = input.value.trim();
+
+            if (!text) return;
+
+            // User Message
+            const userDiv = document.createElement('div');
+            userDiv.className = 'chat-msg user';
+            userDiv.textContent = text;
+            messagesDiv.appendChild(userDiv);
+
+            input.value = '';
+            messagesDiv.scrollTop = messagesDiv.scrollHeight;
+
+            // Show typing indicator
+            typingIndicator.style.display = 'block';
+            messagesDiv.scrollTop = messagesDiv.scrollHeight;
+
+            try {
+                const response = await fetch('/chat-api/', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ message: text })
+                });
+
+                const data = await response.json();
+
+                // Bot Message
+                const botDiv = document.createElement('div');
+                botDiv.className = 'chat-msg bot';
+                botDiv.textContent = data.response || data.error || "Sorry, I couldn't process that.";
+                messagesDiv.appendChild(botDiv);
+
+            } catch (err) {
+                const errorDiv = document.createElement('div');
+                errorDiv.className = 'chat-msg bot';
+                errorDiv.textContent = "Error connecting to AI. Please try again.";
+                messagesDiv.appendChild(errorDiv);
+            } finally {
+                typingIndicator.style.display = 'none';
+                messagesDiv.scrollTop = messagesDiv.scrollHeight;
+            }
+        }
+
         // ===== Force scroll to top on page load =====
+
         if (history.scrollRestoration) history.scrollRestoration = 'manual';
         window.scrollTo(0, 0);
 
