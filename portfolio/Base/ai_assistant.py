@@ -1,8 +1,13 @@
 import os
+import certifi
 from dotenv import load_dotenv
-from groq import Groq
+from langchain_groq import ChatGroq
 
 load_dotenv()
+
+# Fix SSL issues for some environments
+os.environ["SSL_CERT_FILE"] = certifi.where()
+os.environ["REQUESTS_CA_BUNDLE"] = certifi.where()
 
 GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 
@@ -42,20 +47,21 @@ def get_ai_response(user_message):
         return "AI Assistant is currently unavailable. Please use the contact form!"
 
     try:
-        # Initialize Groq client
-        client = Groq(api_key=GROQ_API_KEY.strip().strip('"').strip("'"))
-
-        # Create chat completion
-        completion = client.chat.completions.create(
-            model="llama-3.3-70b-versatile",
-            messages=[
-                {"role": "system", "content": SYSTEM_PROMPT},
-                {"role": "user", "content": user_message}
-            ],
-            temperature=0.7,
-            max_tokens=1024,
+        # Initialize LangChain Groq wrapper
+        llm = ChatGroq(
+            groq_api_key=GROQ_API_KEY.strip().strip('"').strip("'"),
+            model="qwen/qwen3.8-27b",
+            temperature=0.3
         )
 
-        return completion.choices[0].message.content
+        # Simple invocation
+        messages = [
+            ("system", SYSTEM_PROMPT),
+            ("human", user_message)
+        ]
+
+        response = llm.invoke(messages)
+        return response.content
+
     except Exception as e:
         return f"Connection Error: {str(e)}"
