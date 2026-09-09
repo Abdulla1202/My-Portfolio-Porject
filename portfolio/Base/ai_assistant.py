@@ -1,11 +1,10 @@
 import os
-import requests
 from dotenv import load_dotenv
+from groq import Groq
 
 load_dotenv()
 
 GROQ_API_KEY = os.getenv("GROQ_API_KEY")
-GROQ_API_URL = "https://api.groq.com/openai/v1/chat/completions"
 
 SYSTEM_PROMPT = """
 You are Abdulla Ansari's AI Portfolio Assistant. Your goal is to provide accurate and professional information about Abdulla to visitors.
@@ -39,39 +38,24 @@ Instructions:
 """
 
 def get_ai_response(user_message):
-    # Strip any accidental quotes or spaces from the API key
-    api_key = GROQ_API_KEY.strip().strip('"').strip("'") if GROQ_API_KEY else None
-
-    if not api_key:
+    if not GROQ_API_KEY:
         return "AI Assistant is currently unavailable. Please use the contact form!"
 
-    headers = {
-        "Authorization": f"Bearer {api_key}",
-        "Content-Type": "application/json"
-    }
-
-    # Using the most stable current model name for Groq
-    data = {
-        "model": "llama-3.1-8b-instant",
-        "messages": [
-            {"role": "system", "content": SYSTEM_PROMPT},
-            {"role": "user", "content": user_message}
-        ],
-        "temperature": 0.7
-    }
-
     try:
-        response = requests.post(GROQ_API_URL, headers=headers, json=data, timeout=10)
-        if response.status_code == 401:
-            return "API Key is invalid. Please check your Groq API Key in Vercel settings."
-        if response.status_code == 429:
-            return "Too many requests! Please wait a moment and try again."
-        if response.status_code == 400:
-            # If it's still a 400, we print the response body to see the exact reason
-            return f"Bad Request (400): {response.text}"
+        # Initialize Groq client
+        client = Groq(api_key=GROQ_API_KEY.strip().strip('"').strip("'"))
 
-        response.raise_for_status()
-        result = response.json()
-        return result['choices'][0]['message']['content']
+        # Create chat completion
+        completion = client.chat.completions.create(
+            model="llama-3.1-8b-instant",
+            messages=[
+                {"role": "system", "content": SYSTEM_PROMPT},
+                {"role": "user", "content": user_message}
+            ],
+            temperature=0.7,
+            max_tokens=1024,
+        )
+
+        return completion.choices[0].message.content
     except Exception as e:
         return f"Connection Error: {str(e)}"
