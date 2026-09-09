@@ -51,7 +51,8 @@ def get_ai_response(user_message):
         llm = ChatGroq(
             groq_api_key=GROQ_API_KEY.strip().strip('"').strip("'"),
             model="qwen/qwen3.8-27b",
-            temperature=0.3
+            temperature=0.3,
+            max_tokens=200 # Reduced max_tokens to stay within the 1000 OTPM limit
         )
 
         # Simple invocation
