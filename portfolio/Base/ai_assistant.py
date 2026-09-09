@@ -58,9 +58,14 @@ def get_ai_response(user_message):
 
     try:
         response = requests.post(GROQ_API_URL, headers=headers, json=data, timeout=10)
+        if response.status_code == 401:
+            return "API Key is invalid. Please check your Groq API Key in Vercel settings."
+        if response.status_code == 429:
+            return "Too many requests! Please wait a moment and try again."
+
         response.raise_for_status()
         result = response.json()
         return result['choices'][0]['message']['content']
     except Exception as e:
-        print(f"Error calling Groq API: {e}")
-        return "I'm having a bit of trouble connecting right now. Please try again in a moment or use the contact form!"
+        # For debugging, we'll return the actual error message
+        return f"Connection Error: {str(e)}"
