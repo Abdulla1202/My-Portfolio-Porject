@@ -39,24 +39,24 @@
             position: fixed;
             bottom: 100px;
             right: 30px;
-            width: 350px;
+            width: 420px;
             max-width: 90vw;
-            height: 500px;
-            max-height: 70vh;
-            background: rgba(15, 15, 25, 0.95);
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
+            height: 600px;
+            max-height: 80vh;
+            background: rgba(15, 15, 25, 0.98);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 24px;
             display: none;
             flex-direction: column;
             z-index: 1000;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
             overflow: hidden;
-            animation: slideUp 0.3s ease-out;
+            animation: slideUp 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
         @keyframes slideUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            from { opacity: 0; transform: translateY(30px) scale(0.9); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
         }
         .ai-chat-header {
             padding: 20px;
@@ -97,64 +97,68 @@
             border-radius: 10px;
         }
         .chat-msg {
-            max-width: 80%;
-            padding: 10px 15px;
-            border-radius: 15px;
-            font-size: 14px;
-            line-height: 1.5;
+            max-width: 85%;
+            padding: 12px 16px;
+            border-radius: 18px;
+            font-size: 15px;
+            line-height: 1.6;
             word-wrap: break-word;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
         .chat-msg.user {
             align-self: flex-end;
-            background: #4facfe;
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
             color: white;
-            border-bottom-right-radius: 2px;
+            border-bottom-right-radius: 4px;
         }
         .chat-msg.bot {
             align-self: flex-start;
-            background: rgba(255, 255, 255, 0.1);
-            color: #e0e0e0;
-            border-bottom-left-radius: 2px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.08);
+            color: #efefef;
+            border-bottom-left-radius: 4px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
         .ai-chat-input-area {
             padding: 20px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             display: flex;
-            gap: 10px;
-            background: rgba(0, 0, 0, 0.2);
+            gap: 12px;
+            background: rgba(0, 0, 0, 0.3);
         }
         .ai-chat-input {
             flex: 1;
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.07);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 10px 15px;
-            border-radius: 10px;
+            padding: 12px 18px;
+            border-radius: 12px;
             color: white;
             outline: none;
-            font-size: 14px;
+            font-size: 15px;
             transition: 0.3s;
         }
         .ai-chat-input:focus {
             border-color: #4facfe;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.12);
+            box-shadow: 0 0 0 2px rgba(79, 172, 254, 0.2);
         }
         .ai-chat-send {
             background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
             border: none;
-            width: 40px;
-            height: 40px;
-            border-radius: 10px;
+            width: 45px;
+            height: 45px;
+            border-radius: 12px;
             color: white;
             cursor: pointer;
             transition: 0.3s;
             display: flex;
             align-items: center;
             justify-content: center;
+            font-size: 18px;
         }
         .ai-chat-send:hover {
             transform: scale(1.05);
             opacity: 0.9;
+            box-shadow: 0 0 15px rgba(79, 172, 254, 0.4);
         }
         .typing-indicator {
             font-size: 12px;
@@ -162,6 +166,22 @@
             margin-bottom: 10px;
             display: none;
             align-self: flex-start;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 480px) {
+            .ai-chat-window {
+                right: 0;
+                bottom: 0;
+                width: 100%;
+                height: 100%;
+                max-height: 100vh;
+                border-radius: 0;
+            }
+            .ai-chat-bubble {
+                bottom: 20px;
+                right: 20px;
+            }
         }
     </style>
 </head>
@@ -563,7 +583,16 @@
                 // Bot Message
                 const botDiv = document.createElement('div');
                 botDiv.className = 'chat-msg bot';
-                botDiv.textContent = data.response || data.error || "Sorry, I couldn't process that.";
+
+                // Format the response for better readability
+                let formattedResponse = data.response || data.error || "Sorry, I couldn't process that.";
+
+                // Convert bold **text** to <b>text</b>
+                formattedResponse = formattedResponse.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+                // Convert newlines to <br>
+                formattedResponse = formattedResponse.replace(/\n/g, '<br>');
+
+                botDiv.innerHTML = formattedResponse;
                 messagesDiv.appendChild(botDiv);
 
             } catch (err) {
