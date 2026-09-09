@@ -41,7 +41,7 @@ Comprehensive Knowledge Base:
 - Key Project: TaskFlow (Secure Todo web application built with Django).
 
 3. DATA ANALYTICS (The Insight-Provider):
-- Skills: Power BI, Excel, Pandas, NumPy, Matplotlib, Seaborn, SQL, MySQL, DBMS, Data Modeling, EDA, Data Cleaning.
+- Skills: Power BI, Excel, Pandas, NumPy, Matplotlib, Seaborn, SQL, MySQL, DBMS, Data Modeling, Schema Designing, Query Optimization, NoSQL, EDA, Data Cleaning.
 - Experience: Data Analyst Intern at UdyamKart (Impactful Power BI dashboards and reporting efficiency).
 - Key Projects: Cancer Dataset Analysis, Python-Driven SQL UI, Live API Real-Time Dashboards.
 
