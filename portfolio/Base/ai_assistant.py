@@ -39,16 +39,20 @@ Instructions:
 """
 
 def get_ai_response(user_message):
-    if not GROQ_API_KEY:
+    # Strip any accidental quotes or spaces from the API key
+    api_key = GROQ_API_KEY.strip().strip('"').strip("'") if GROQ_API_KEY else None
+
+    if not api_key:
         return "AI Assistant is currently unavailable. Please use the contact form!"
 
     headers = {
-        "Authorization": f"Bearer {GROQ_API_KEY}",
+        "Authorization": f"Bearer {api_key}",
         "Content-Type": "application/json"
     }
 
+    # Using the most stable current model name for Groq
     data = {
-        "model": "llama3-8b-8192",
+        "model": "llama-3.1-8b-instant",
         "messages": [
             {"role": "system", "content": SYSTEM_PROMPT},
             {"role": "user", "content": user_message}
@@ -62,10 +66,12 @@ def get_ai_response(user_message):
             return "API Key is invalid. Please check your Groq API Key in Vercel settings."
         if response.status_code == 429:
             return "Too many requests! Please wait a moment and try again."
+        if response.status_code == 400:
+            # If it's still a 400, we print the response body to see the exact reason
+            return f"Bad Request (400): {response.text}"
 
         response.raise_for_status()
         result = response.json()
         return result['choices'][0]['message']['content']
     except Exception as e:
-        # For debugging, we'll return the actual error message
         return f"Connection Error: {str(e)}"
